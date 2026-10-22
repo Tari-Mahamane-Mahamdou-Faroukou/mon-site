@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mon espace</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header class="haut"><div><h1 id="nom">Mon espace</h1><small id="niveau"></small></div><div><button onclick="deconnexion()">Se déconnecter</button></div></header>
+<main class="page">
+<div id="msg"></div>
+<section class="carte"><h2>Mes modules</h2><div id="modules">Chargement…</div></section>
+<section class="carte"><h2>Mes notes</h2><div id="notes">Chargement…</div></section>
+<section class="carte"><h2>Mes PV</h2><div id="pv">Chargement…</div></section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="config.js"></script><script src="common.js"></script><script src="etudiant.js"></script>
+</body></html>

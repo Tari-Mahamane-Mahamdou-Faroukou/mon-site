@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Espace docteur</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header class="haut"><div><h1>Espace docteur</h1><small id="qui"></small></div><div><button onclick="deconnexion()">Se déconnecter</button></div></header>
+<nav>
+<button id="t-niveaux" onclick="montrer('niveaux')">Niveaux</button>
+<button id="t-etudiants" onclick="montrer('etudiants')">Étudiants</button>
+<button id="t-modules" onclick="montrer('modules')">Modules et fichiers</button>
+<button id="t-notes" onclick="montrer('notes')">Notes</button>
+<button id="t-pv" onclick="montrer('pv')">PV</button>
+</nav>
+<main class="page">
+<div id="msg"></div>
+
+<section id="s-niveaux" class="carte"><h2>Niveaux</h2>
+<input id="niv-nom" placeholder="Nom du niveau (ex. Licence 1)"><button onclick="ajNiveau()">Ajouter le niveau</button>
+<ul id="l-niveaux"></ul></section>
+
+<section id="s-etudiants" class="carte"><h2>Étudiants inscrits</h2>
+<p class="sous">Attribuez un niveau à chaque étudiant pour qu'il voie ses cours.</p>
+<table id="l-etudiants"></table></section>
+
+<section id="s-modules" class="carte"><h2>Nouveau module</h2>
+<select id="m-niveau"></select><input id="m-titre" placeholder="Titre du module"><input id="m-desc" placeholder="Description (facultatif)"><input id="m-coef" type="number" min="0.5" step="0.5" value="1" placeholder="Coefficient">
+<button onclick="ajModule()">Ajouter le module</button>
+<h2>Publier un fichier (PDF, photo, vidéo)</h2>
+<select id="r-module"></select><input id="r-titre" placeholder="Titre du fichier (facultatif)"><input id="r-fichier" type="file" accept=".pdf,image/*,video/*">
+<button onclick="ajRessource()">Publier le fichier</button>
+<h2>Modules publiés</h2><div id="l-modules"></div></section>
+
+<section id="s-notes" class="carte"><h2>Saisir les notes</h2>
+<select id="n-niveau" onchange="lNotes()"></select><select id="n-module" onchange="lNotes()"></select>
+<select id="n-session" onchange="lNotes()"><option value="normale">Session normale</option><option value="rattrapage">Rattrapage</option></select>
+<table id="l-notes"></table><button onclick="saveNotes()">Enregistrer les notes</button></section>
+
+<section id="s-pv" class="carte"><h2>Publier un PV</h2>
+<select id="p-niveau" onchange="lPV()"></select><select id="p-etudiant"></select><input id="p-titre" placeholder="Titre du PV (facultatif)"><input id="p-fichier" type="file" accept=".pdf,image/*">
+<button onclick="ajPV()">Publier le PV</button>
+<h2>PV publiés</h2><ul id="l-pv"></ul></section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="config.js"></script><script src="common.js"></script><script src="docteur.js"></script>
+</body></html>

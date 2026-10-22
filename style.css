@@ -1,0 +1,31 @@
+:root{--encre:#0f3d3e;--fond:#f1f5f6;--blanc:#fff;--ligne:#d5dfe1;--accent:#c98a00;--ok:#1d7a4d;--err:#b3261e;--texte:#1b2a2c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--fond);color:var(--texte);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+h1,h2,h3{line-height:1.2;color:var(--encre);margin:0 0 .6rem}
+h1{font-size:1.6rem}h2{font-size:1.2rem;margin-top:1.4rem}
+.haut{background:var(--encre);color:#fff;padding:.9rem 1rem;display:flex;gap:1rem;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.haut h1{color:#fff;margin:0;font-size:1.15rem}.haut small{opacity:.8}
+.page{max-width:920px;margin:0 auto;padding:1rem}
+.carte{background:var(--blanc);border:1px solid var(--ligne);border-radius:10px;padding:1.2rem;margin-bottom:1rem}
+.centre{max-width:400px;margin:12vh auto 0}
+.sous{color:#4d6366;margin-top:0}
+input,select,button{font:inherit;padding:.65rem .75rem;border:1px solid var(--ligne);border-radius:8px;background:#fff;width:100%;margin:.25rem 0}
+button{background:var(--encre);color:#fff;border:0;cursor:pointer;font-weight:600}
+button:hover{background:#0b2d2e}
+button.mini{width:auto;padding:.2rem .6rem;font-size:.85rem;background:#eef2f3;color:var(--err);border:1px solid var(--ligne)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+a{color:var(--encre)}
+#msg{min-height:1.4rem;font-size:.95rem;margin-bottom:.4rem}.ok{color:var(--ok)}.err{color:var(--err)}
+nav{display:flex;gap:.4rem;overflow-x:auto;padding:.6rem 1rem;background:#e3eaec}
+nav button{width:auto;background:#fff;color:var(--encre);border:1px solid var(--ligne);white-space:nowrap}
+nav button.actif{background:var(--accent);color:#fff;border-color:var(--accent)}
+table{width:100%;border-collapse:collapse}td,th{padding:.45rem .5rem;border-bottom:1px solid var(--ligne);text-align:left}
+td input,td select{margin:0}
+ul{padding-left:1.1rem}li{margin:.3rem 0}
+.bloc{border-top:1px solid var(--ligne);padding:.6rem 0}
+.fichier{display:inline-block;margin:.2rem .8rem .2rem 0}
+.module img{max-width:100%;max-height:260px;border-radius:8px;margin:.3rem .3rem .3rem 0}
+.module video{width:100%;max-height:340px;border-radius:8px;background:#000;margin:.3rem 0}
+.moy{font-size:1.1rem;font-weight:700;color:var(--encre)}
+[hidden]{display:none!important}
+@media(max-width:600px){.page{padding:.6rem}}

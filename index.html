@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Espace cours</title><link rel="stylesheet" href="style.css"></head>
+<body><main class="carte centre">
+<h1>Espace cours</h1>
+<p class="sous">Connectez-vous pour voir vos cours, vos notes et vos PV.</p>
+<div id="msg"></div>
+<input id="nom" placeholder="Nom complet" autocomplete="name" hidden>
+<input id="email" type="email" placeholder="E-mail" autocomplete="email">
+<input id="mdp" type="password" placeholder="Mot de passe (6 caractères minimum)" autocomplete="current-password">
+<button id="go">Se connecter</button>
+<p><a href="#" id="bascule">Pas de compte ? Créer un compte étudiant</a></p>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="config.js"></script><script src="common.js"></script>
+<script>
+let inscription = false;
+const aller = p => { location.href = p && p.role === "docteur" ? "docteur.html" : "etudiant.html"; };
+profilCourant().then(p => { if (p) aller(p); });
+$("bascule").onclick = e => {
+  e.preventDefault(); inscription = !inscription;
+  $("nom").hidden = !inscription;
+  $("go").textContent = inscription ? "Créer mon compte" : "Se connecter";
+  e.target.textContent = inscription ? "Déjà un compte ? Se connecter" : "Pas de compte ? Créer un compte étudiant";
+};
+$("go").onclick = async () => {
+  const email = $("email").value.trim(), password = $("mdp").value;
+  if (inscription) {
+    const { error } = await db.auth.signUp({ email, password, options: { data: { nom_complet: $("nom").value.trim() } } });
+    if (error) return msg(error.message);
+    msg("Compte créé. Le docteur doit vous affecter à un niveau, puis connectez-vous.", true);
+  } else {
+    const { error } = await db.auth.signInWithPassword({ email, password });
+    if (error) return msg("E-mail ou mot de passe incorrect.");
+    aller(await profilCourant());
+  }
+};
+</script></body></html>
